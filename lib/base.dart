@@ -17,9 +17,9 @@ class App extends StatelessWidget {
 }
 
 class AppHomePage extends StatelessWidget {
-  String title;
+  final String title;
 
-  AppHomePage({super.key, required this.title});
+  const AppHomePage({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
