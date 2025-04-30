@@ -5,6 +5,8 @@ void main() {
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,15 +17,15 @@ class App extends StatelessWidget {
 }
 
 class AppHomePage extends StatelessWidget {
-  String title;
+  final String title;
 
-  AppHomePage({required this.title});
+  const AppHomePage({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(this.title),
+          title: Text(title),
         ),
         body: Column(
           children: [
@@ -36,9 +38,9 @@ class AppHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {},
-              child: Text("CLICK HERE !"),
               style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(Colors.amber)),
+              child: Text("CLICK HERE !"),
             ),
             OutlinedButton(onPressed: () {}, child: Text("CLICK NOT HERE !")),
             FilledButton(onPressed: () {}, child: Text("DON'T CLICK HERE !")),
