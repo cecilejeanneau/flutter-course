@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 
 class ContentBody extends StatelessWidget {
+  const ContentBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Row(
           children: [
-            Image.network(
-                width: 125,
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK2nG24AYDm6FOEC7jIfgubO96GbRso2Xshu1f8abSYQ&s"),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ClipOval(
+                child: Image.network(
+                  width: 150,
+                  height: 150,
+                  fit: BoxFit.cover,
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbhexunBo97hQ25UZOF8cuMYu2uSrlbMShRQ&s"),
+              ),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -18,7 +27,7 @@ class ContentBody extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Lacrevette@Chocolat"),
+                        Text("LilithKorn@NotNette"),
                         Text("50s", style: TextStyle(color: Colors.grey))
                       ],
                     ),
@@ -39,9 +48,9 @@ class ContentBody extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("Répondre"),
-              Text("Retweet"),
-              Text("Favoris"),
+              IconButton(onPressed: null, icon: Icon(Icons.comment_outlined), color: Colors.grey),
+              IconButton(onPressed: null, icon: Icon(Icons.repeat_rounded), color: Colors.grey),
+              IconButton(onPressed: null, icon: Icon(Icons.star_purple500_rounded), color: Colors.grey),
             ],
           ),
         )

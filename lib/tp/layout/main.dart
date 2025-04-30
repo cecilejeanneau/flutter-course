@@ -1,8 +1,10 @@
+import 'package:demo/tp/form/login_form.dart';
 import 'package:flutter/material.dart';
 
-import '../content-body.dart';
+import '../content_body.dart';
 import 'footer.dart';
 import 'header.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(App());
@@ -15,7 +17,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Demo layout",
-      home: AppHomePage(title: "Y"),
+      home: AppHomePage(
+          title: "TwitterLike",
+      ),
     );
   }
 }
@@ -29,11 +33,19 @@ class AppHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          centerTitle: true,
+          title: Text(
+            title,
+            style: GoogleFonts.yatraOne(
+              fontSize: 50,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         body: Column(
           children: [
             Header(),
+            LoginForm(),
             Expanded(child: ContentBody()),
             Footer(),
           ],

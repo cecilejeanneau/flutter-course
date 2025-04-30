@@ -7,7 +7,7 @@ class FooterButton extends StatelessWidget {
   const FooterButton({super.key, required this.label, this.isActive = false});
 
   Color getColor(){
-    return isActive ? Color(0xFF58B0F0) : Colors.grey;
+    return isActive ? Colors.teal : Colors.grey;
   }
 
   @override
