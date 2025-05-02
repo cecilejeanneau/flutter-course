@@ -37,84 +37,88 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        width: 400,
-        decoration: BoxDecoration(
-          // border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withAlpha(45),
-              offset: Offset(0.0, 3.0), //(x,y)
-              blurRadius: 6.0,
-              spreadRadius: 2,
-            )
-          ]
-        ),
-        child: Form(
-            key: _keyForm,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text(style: TextStyle(color: Colors.grey), "Connexion"),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    validator: validateEmail,
-                    onSaved: (value) {
-                        login = value!;
-                    },
-                    decoration: InputDecoration(
-                        labelText: "Identifiant",
-                        hintText: "Entrez votre identifiant"),
-                  ),
-                  TextFormField(
-                      validator: validatePassword,
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          width: 400,
+          height: 300,
+          decoration: BoxDecoration(
+            // border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withAlpha(45),
+                offset: Offset(0.0, 3.0), //(x,y)
+                blurRadius: 6.0,
+                spreadRadius: 2,
+              )
+            ]
+          ),
+          child: Form(
+              key: _keyForm,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(style: TextStyle(color: Colors.grey), "Connexion"),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      validator: validateEmail,
                       onSaved: (value) {
-                          password = value!;
+                          login = value!;
                       },
-                      obscureText: true,
                       decoration: InputDecoration(
-                          labelText: "Mot de passe",
-                          hintText: "Entrez votre mort de passe")),
-                  // Row(
-                  //   children: [
-                  //     Switch(
-                  //         value: rememberMe,
-                  //         onChanged: (value) => setState(() => rememberMe = value)),
-                  //     Text('Mémoriser mes informations'),
-                  //   ],
-                  // ),
-                  SwitchListTile(
-                      value: rememberMe,
-                      onChanged: (value) => setState(() => rememberMe = value),
-                      title: Text('Mémoriser mes informations')
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.teal.shade200)),
-                        onPressed: () {
-                          if (_keyForm.currentState!.validate()) {
-                            _keyForm.currentState!.save();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Vous êtes connecté en tant que : $login'),
-                                )
-                            );
-                          }
+                          labelText: "Identifiant",
+                          hintText: "Entrez votre identifiant"),
+                    ),
+                    TextFormField(
+                        validator: validatePassword,
+                        onSaved: (value) {
+                            password = value!;
                         },
-                        child: Text('Login', style: TextStyle(color: Colors.white))
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            labelText: "Mot de passe",
+                            hintText: "Entrez votre mort de passe")),
+                    // Row(
+                    //   children: [
+                    //     Switch(
+                    //         value: rememberMe,
+                    //         onChanged: (value) => setState(() => rememberMe = value)),
+                    //     Text('Mémoriser mes informations'),
+                    //   ],
+                    // ),
+                    SwitchListTile(
+                        value: rememberMe,
+                        onChanged: (value) => setState(() => rememberMe = value),
+                        title: Text('Mémoriser mes informations')
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.teal.shade200)),
+                          onPressed: () {
+                            if (_keyForm.currentState!.validate()) {
+                              _keyForm.currentState!.save();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Vous êtes connecté en tant que : $login'),
+                                  )
+                              );
+                              Navigator.pushNamed(context, '/tweet-list-page', arguments: login);
+                            }
+                          },
+                          child: Text('Login', style: TextStyle(color: Colors.white))
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )),
+        ),
       ),
     );
   }

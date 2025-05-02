@@ -1,12 +1,9 @@
-import 'package:demo/tp/form/login_form.dart';
 import 'package:flutter/material.dart';
-
-import '../content_body.dart';
-import 'footer.dart';
-import 'header.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:url_strategy/url_strategy.dart';
+import '../routes/routes.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(App());
 }
 
@@ -16,39 +13,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Demo layout",
-      home: AppHomePage(
-          title: "TwitterLike",
-      ),
+      title: "Twitter TP",
+      initialRoute: "/login",
+      routes:
+        Routes.getRoutes(context),
     );
-  }
-}
-
-class AppHomePage extends StatelessWidget {
-  final String title;
-
-  const AppHomePage({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            title,
-            style: GoogleFonts.yatraOne(
-              fontSize: 50,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        body: Column(
-          children: [
-            Header(),
-            LoginForm(),
-            Expanded(child: ContentBody()),
-            Footer(),
-          ],
-        ));
   }
 }
