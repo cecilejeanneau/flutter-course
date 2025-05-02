@@ -9,7 +9,7 @@ void main() {
 }
 
 class Routes {
-  // static Map<String, WidgetBuilder> get routes => {
+  // static Map<String, WidgetBuilder> get route => {
   static Map<String, WidgetBuilder> getRoutes(BuildContext context) => {
     "/page-1": (context) => const PageOne(),
     "/page-2": (context) => const PageTwo(),
